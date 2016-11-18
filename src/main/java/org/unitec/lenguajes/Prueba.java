@@ -1,5 +1,8 @@
 
-package org.unitec.lenguajes;
+package concurrencia;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*Segunda forma de crear Threads*/
 public class Prueba implements Runnable{
@@ -21,10 +24,18 @@ public class Prueba implements Runnable{
       
       Thread t3=new Thread(new Runnable(){
             @Override
-            public void run() {
+     public void run() {
+         while(true){
+             
+         
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Prueba.class.getName()).log(Level.SEVERE, null, ex);
+                }
               
       System.out.println("Soy un background Thread..."); 
-                
+         }
             }
       });
       t3.start();
